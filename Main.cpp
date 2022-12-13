@@ -1,5 +1,6 @@
 #include "SelectionSort.hpp"
 #include "BubbleSort.hpp"
+#include "InsertionSort.hpp"
 
 int main(int argc, char const *argv[])
 {
@@ -21,6 +22,14 @@ int main(int argc, char const *argv[])
     // bubbleSort->Print();
     // cout << endl;
     // delete (bubbleSort);
+
+    InsertionSort<int> *insertionSort = new InsertionSort<int>(v, n);
+    insertionSort->Print();
+    insertionSort->Sort();
+    cout << endl;
+    insertionSort->Print();
+    cout << endl;
+    delete (insertionSort);
 
     return 0;
 }

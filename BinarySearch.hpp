@@ -5,10 +5,20 @@ template <class T>
 class BinarySearch
 {
 private:
-    /* data */
+    T *array;
+    T Key;
+
 public:
-    BinarySearch(/* args */);
-    ~BinarySearch();
+    BinarySearch(/* args */)
+    {
+    }
+    ~BinarySearch()
+    {
+    }
+    int FindMiddle(int left, int right)
+    {
+        return (left + right)2;
+    }
 };
 
 #endif

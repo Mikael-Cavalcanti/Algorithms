@@ -8,11 +8,6 @@ template <class T>
 class SelectionSort
 {
 private:
-    T *array;
-    int size;
-    T minValue;
-
-private:
     void Swap(T &a, T &b)
     {
         T temp = a;
@@ -21,19 +16,10 @@ private:
     }
 
 public:
-    SelectionSort(T arr[], int size)
+    void Sort(T array[], int size)
     {
-        this->size = size;
-        array = arr;
-    }
+        int minValue;
 
-    ~SelectionSort()
-    {
-        cout << "Clean Selection" << endl;
-    }
-
-    void Sort()
-    {
         for (int i = 0; i < size - 1; i++)
         {
             minValue = i;
@@ -48,7 +34,7 @@ public:
         }
     }
 
-    void Print()
+    void Print(T array[], int size)
     {
         for (int i = 0; i < size; i++)
         {

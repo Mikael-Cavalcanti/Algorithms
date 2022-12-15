@@ -10,14 +10,14 @@ int main(int argc, char const *argv[])
     int v[3] = {3, 1, 5};
     int n = sizeof(v) / sizeof(v[0]);
 
-    SelectionSort<int> *selectionSort = new SelectionSort<int>();
-    PrintVector(v, n);
-    selectionSort->Sort(v, n);
-    cout << endl;
-    PrintVector(v, n);
-    cout << endl;
-    selectionSort->~SelectionSort();
-    free(selectionSort);
+    // SelectionSort<int> *selectionSort = new SelectionSort<int>();
+    // PrintVector(v, n);
+    // selectionSort->Sort(v, n);
+    // cout << endl;
+    // PrintVector(v, n);
+    // cout << endl;
+    // selectionSort->~SelectionSort();
+    // free(selectionSort);
 
     // BubbleSort<int> *bubbleSort = new BubbleSort<int>(v, n);
     // bubbleSort->Print();
@@ -35,6 +35,8 @@ int main(int argc, char const *argv[])
     // cout << endl;
     // delete (insertionSort);
     //
+
+    
 
     return 0;
 }

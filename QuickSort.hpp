@@ -5,10 +5,11 @@ template <class T>
 class QuickSort
 {
 private:
-    /* data */
 public:
-    QuickSort(/* args */);
-    ~QuickSort();
+    void Sort(T array[], int left, int right)
+    {
+        
+    }
 };
 
 #endif

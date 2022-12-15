@@ -8,32 +8,25 @@ template <class T>
 class MergeSort
 {
 private:
-    T *array;
-    int left;
-    int middle;
-    int right;
+    T *temp;
+
+private:
+    void Merge(T *arr, int left, int right)
+    {
+        for (int i = left; i <= right; i++)
+        {
+        }
+    }
 
 public:
-    MergeSort(T *arr, int size)
-    {
-    }
-    ~MergeSort()
-    {
-    }
-    void MergeSort(T *arr, int left, int right)
+    void Sort(T arr[], int left, int right)
     {
         if (left < right)
         {
             middle = (left + right) / 2;
-            MergeSort(arr, size, left, middle);
-            MergeSort(arr, size, middle + 1, right);
-        }
-    }
-    void Merge(T *arr, int left, int right)
-    {
-        for (int i = 0; i < count; i++)
-        {
-            
+            Sort(arr, left, middle);
+            sort(arr, middle + 1, right);
+            Merge(arr, left, middle);
         }
     }
 };

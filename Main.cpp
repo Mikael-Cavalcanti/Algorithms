@@ -5,10 +5,24 @@
 template <class T>
 void PrintVector(T v[], int size);
 
+template <class T>
+void Swap(T &a, T &b)
+{
+    a = a ^ b;
+    b = a ^ b;
+    a = a ^ b;
+}
+
 int main(int argc, char const *argv[])
 {
     int v[3] = {3, 1, 5};
     int n = sizeof(v) / sizeof(v[0]);
+
+    float a = 2.5, b = 0.5;
+
+    swap<float>(a, b);
+
+    cout << a << " | " << b << endl;
 
     // SelectionSort<int> *selectionSort = new SelectionSort<int>();
     // PrintVector(v, n);
@@ -35,8 +49,6 @@ int main(int argc, char const *argv[])
     // cout << endl;
     // delete (insertionSort);
     //
-
-    
 
     return 0;
 }

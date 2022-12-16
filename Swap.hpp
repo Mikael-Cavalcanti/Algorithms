@@ -1,13 +1,23 @@
 #ifndef SWAP
 #define SWAP
 
-template <class T>
+#include <iostream>
+#include <bits/stdc++.h>
 
+template <class T>
 class Swap
 {
 public:
-    Swap(/* args */);
-    ~Swap();
+    Swap()
+    {
+    }
+
+    void swap(T &a, T &b)
+    {
+        a = a ^ b;
+        b = a ^ b;
+        a = a ^ b;
+    }
 };
 
 #endif

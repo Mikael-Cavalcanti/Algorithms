@@ -1,16 +1,15 @@
 #include "SelectionSort.hpp"
 #include "BubbleSort.hpp"
 #include "InsertionSort.hpp"
+#include "Swap.hpp"
 
 template <class T>
-void PrintVector(T v[], int size);
-
-template <class T>
-void Swap(T &a, T &b)
+void PrintVector(T v[], int size)
 {
-    a = a ^ b;
-    b = a ^ b;
-    a = a ^ b;
+    for (int i = 0; i < size; i++)
+    {
+        cout << i << " : " << v[i] << endl;
+    }
 }
 
 int main(int argc, char const *argv[])
@@ -18,9 +17,10 @@ int main(int argc, char const *argv[])
     int v[3] = {3, 1, 5};
     int n = sizeof(v) / sizeof(v[0]);
 
-    float a = 2.5, b = 0.5;
+    int a = 2, b = 5;
 
-    swap<float>(a, b);
+    Swap<int> swap;
+    swap.swap(a, b);
 
     cout << a << " | " << b << endl;
 
@@ -51,13 +51,4 @@ int main(int argc, char const *argv[])
     //
 
     return 0;
-}
-
-template <class T>
-void PrintVector(T v[], int size)
-{
-    for (int i = 0; i < size; i++)
-    {
-        cout << i << " : " << v[i] << endl;
-    }
 }

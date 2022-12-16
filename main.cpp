@@ -17,7 +17,7 @@ int main(int argc, char const *argv[])
     int v[3] = {3, 1, 5};
     int n = sizeof(v) / sizeof(v[0]);
 
-    int a = 2, b = 5;
+    int a = 2, b = 5;//
 
     Swap<int> swap;
     swap.swap(a, b);

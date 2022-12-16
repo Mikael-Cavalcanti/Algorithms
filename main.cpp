@@ -22,7 +22,7 @@ int main(int argc, char const *argv[])
     Swap<int> swap;
     swap.swap(a, b);
 
-    cout << a << " | " << b << endl;
+    cout << a << " | " << b << endl;//
 
     // SelectionSort<int> *selectionSort = new SelectionSort<int>();
     // PrintVector(v, n);

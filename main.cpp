@@ -3,6 +3,7 @@
 #include "InsertionSort.hpp"
 #include "Swap.hpp"
 #include "QuickSort.hpp"
+#include "BSearchRecursive.hpp"
 
 template <class T>
 void PrintVector(T v[], int size)

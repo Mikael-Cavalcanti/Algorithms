@@ -2,17 +2,17 @@
 #define BINARY_SEARCH
 
 template <class T>
-class BinarySearch
+class BSearch
 {
 private:
     T *array;
     T Key;
 
 public:
-    BinarySearch(/* args */)
+    BSearch(/* args */)
     {
     }
-    ~BinarySearch()
+    ~BSearch()
     {
     }
     int FindMiddle(int left, int right)

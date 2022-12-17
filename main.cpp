@@ -2,27 +2,31 @@
 #include "BubbleSort.hpp"
 #include "InsertionSort.hpp"
 #include "Swap.hpp"
+#include "QuickSort.hpp"
 
 template <class T>
 void PrintVector(T v[], int size)
 {
+    cout << "[";
     for (int i = 0; i < size; i++)
     {
-        cout << i << " : " << v[i] << endl;
+        cout << " " << v[i];
     }
+    cout << " ]" << endl;
 }
 
 int main(int argc, char const *argv[])
 {
     int v[3] = {3, 1, 5};
     int n = sizeof(v) / sizeof(v[0]);
+    int left = 0, right = n - 1;
 
-    int a = 2, b = 5;//
-
-    Swap<int> swap;
-    swap.swap(a, b);
-
-    cout << a << " | " << b << endl;//
+    QuickSort<int> *quickSort = new QuickSort<int>();
+    PrintVector(v, n);
+    quickSort->Sort(v, left, right);
+    cout << endl;
+    PrintVector(v, n);
+    delete quickSort;
 
     // SelectionSort<int> *selectionSort = new SelectionSort<int>();
     // PrintVector(v, n);

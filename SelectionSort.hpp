@@ -2,18 +2,14 @@
 #define SELECTION_SORT
 
 #include <iostream>
+#include "Swap.hpp"
 using namespace std;
 
 template <class T>
 class SelectionSort
 {
 private:
-    void Swap(T &a, T &b)
-    {
-        T temp = a;
-        a = b;
-        b = temp;
-    }
+    Swap<T> swap;
 
 public:
     void Sort(T array[], int size)
@@ -28,7 +24,7 @@ public:
                 if (array[j] < array[minValue])
                 {
                     minValue = j;
-                    Swap(array[i], array[minValue]);
+                    swap.swap(array[i], array[minValue]);
                 }
             }
         }

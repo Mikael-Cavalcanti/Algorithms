@@ -4,6 +4,9 @@
 #include "Swap.hpp"
 #include "QuickSort.hpp"
 #include "BSearchRecursive.hpp"
+#include "BSearch.hpp"
+
+#include <string>
 
 template <class T>
 void PrintVector(T v[], int size)
@@ -18,7 +21,8 @@ void PrintVector(T v[], int size)
 
 int main(int argc, char const *argv[])
 {
-    int v[3] = {3, 1, 5};
+    string exist = "test";
+    int v[] = {3, 1, 5};
     int n = sizeof(v) / sizeof(v[0]);
     int left = 0, right = n - 1;
 
@@ -27,6 +31,24 @@ int main(int argc, char const *argv[])
     quickSort->Sort(v, left, right);
     cout << endl;
     PrintVector(v, n);
+
+#pragma BSearchRecursive
+    // BSearchRecursive<int> *bsearch = new BSearchRecursive<int>();
+    // cout << endl;
+    // bool res = bsearch->Search(v, left, right, 3);
+    // cout << "Result : " << res << endl;
+    // cout << endl;
+#pragma endregion
+
+    BSearch<int> *bsearch = new BSearch<int>();
+    cout << endl;
+    int item = 10;
+    bool res = bsearch->Find(v, left, right, item);
+    exist = res == true ? "exist" : "don't exist";
+    cout << "The Item: [" << item << "] " << exist << " in Array" << endl;
+    cout << endl;
+
+    delete bsearch;
     delete quickSort;
 
     // SelectionSort<int> *selectionSort = new SelectionSort<int>();

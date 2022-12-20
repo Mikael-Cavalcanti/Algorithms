@@ -4,20 +4,29 @@
 template <class T>
 class BSearch
 {
-private:
-    T *array;
-    T Key;
 
 public:
-    BSearch(/* args */)
+    BSearch()
     {
     }
     ~BSearch()
     {
     }
-    int FindMiddle(int left, int right)
+    bool Find(T array[], int left, int right, T &key)
     {
-        return (left + right)2;
+        int middle;
+        while (left <= right)
+        {
+            middle = (left + right) / 2;
+            if (key == array[middle])
+                return true;
+            else if (key < array[middle])
+                right = middle - 1;
+            else
+                left = middle + 1;
+        }
+
+        return false;
     }
 };
 

@@ -7,7 +7,7 @@ class BSearchRecursive
 public:
     BSearchRecursive() {}
     ~BSearchRecursive() {}
-    bool Search(T array[], int left, int right, T Key)
+    bool Search(T array[], int left, int right, T &Key)
     {
         int middle;
 

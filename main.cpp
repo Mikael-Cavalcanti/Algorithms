@@ -5,6 +5,7 @@
 #include "QuickSort.hpp"
 #include "BSearchRecursive.hpp"
 #include "BSearch.hpp"
+#include "MergeSort.hpp"
 
 #include <string>
 
@@ -22,14 +23,12 @@ void PrintVector(T v[], int size)
 int main(int argc, char const *argv[])
 {
     // string exist = "test";
-    // int v[] = {3, 1, 5};
-    // int n = sizeof(v) / sizeof(v[0]);
-    // int left = 0, right = n - 1;
+    int v[] = {3, 1, 5};
+    int n = sizeof(v) / sizeof(v[0]);
+    int left = 0, right = n - 1;
     // string v = "cba";
     // int left = 0, right = v.size() - 1;
-
-    // cout << "Size: " << v.size() << endl;
-
+    // cout << "Size: " << v.size() << endl;s
     // char test[v.size()];
 
     // for (int i = 0; i < v.size(); i++)
@@ -37,12 +36,11 @@ int main(int argc, char const *argv[])
     //     test[i] = v[i];
     // }
 
-    // QuickSort<char> *quickSort = new QuickSort<char>();
-    // PrintVector<char>(test, v.size());
-    // quickSort->Sort(test, 0, right);
-    // cout << endl;
-
-    // PrintVector<char>(test, v.size());
+    MergeSort<int> *mergeSort = new MergeSort<int>(right);
+    PrintVector<int>(v, n);
+    mergeSort->Sort(v, left, right);
+    cout << endl;
+    PrintVector<int>(v, n);
 
     // cout << " V : " << v << endl;
 

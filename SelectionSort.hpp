@@ -24,7 +24,7 @@ public:
                 if (array[j] < array[minValue])
                 {
                     minValue = j;
-                    swap.swap(array[i], array[minValue]);
+                    swap.swapBit(array[i], array[minValue]);
                 }
             }
         }

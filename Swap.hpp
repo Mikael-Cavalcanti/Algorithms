@@ -12,11 +12,17 @@ public:
     {
     }
 
-    void swap(T &a, T &b)
+    void swapBit(T &a, T &b)
     {
         a = a ^ b;
         b = a ^ b;
         a = a ^ b;
+    }
+    void swap(T &a, T &b)
+    {
+        T temp = a;
+        a = b;
+        b = temp;
     }
 };
 

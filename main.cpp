@@ -21,16 +21,30 @@ void PrintVector(T v[], int size)
 
 int main(int argc, char const *argv[])
 {
-    string exist = "test";
-    int v[] = {3, 1, 5};
-    int n = sizeof(v) / sizeof(v[0]);
-    int left = 0, right = n - 1;
+    // string exist = "test";
+    // int v[] = {3, 1, 5};
+    // int n = sizeof(v) / sizeof(v[0]);
+    // int left = 0, right = n - 1;
+    // string v = "cba";
+    // int left = 0, right = v.size() - 1;
 
-    QuickSort<int> *quickSort = new QuickSort<int>();
-    PrintVector(v, n);
-    quickSort->Sort(v, left, right);
-    cout << endl;
-    PrintVector(v, n);
+    // cout << "Size: " << v.size() << endl;
+
+    // char test[v.size()];
+
+    // for (int i = 0; i < v.size(); i++)
+    // {
+    //     test[i] = v[i];
+    // }
+
+    // QuickSort<char> *quickSort = new QuickSort<char>();
+    // PrintVector<char>(test, v.size());
+    // quickSort->Sort(test, 0, right);
+    // cout << endl;
+
+    // PrintVector<char>(test, v.size());
+
+    // cout << " V : " << v << endl;
 
 #pragma BSearchRecursive
     // BSearchRecursive<int> *bsearch = new BSearchRecursive<int>();
@@ -40,16 +54,16 @@ int main(int argc, char const *argv[])
     // cout << endl;
 #pragma endregion
 
-    BSearch<int> *bsearch = new BSearch<int>();
-    cout << endl;
-    int item = 10;
-    bool res = bsearch->Find(v, left, right, item);
-    exist = res == true ? "exist" : "don't exist";
-    cout << "The Item: [" << item << "] " << exist << " in Array" << endl;
-    cout << endl;
+    // BSearch<int> *bsearch = new BSearch<int>();
+    // cout << endl;
+    // int item = 10;
+    // bool res = bsearch->Find(v, left, right, item);
+    // exist = res == true ? "exist" : "don't exist";
+    // cout << "The Item: [" << item << "] " << exist << " in Array" << endl;
+    // cout << endl;
 
-    delete bsearch;
-    delete quickSort;
+    // delete bsearch;
+    // delete quickSort;
 
     // SelectionSort<int> *selectionSort = new SelectionSort<int>();
     // PrintVector(v, n);
@@ -75,7 +89,5 @@ int main(int argc, char const *argv[])
     // insertionSort->Print();
     // cout << endl;
     // delete (insertionSort);
-    //
-
     return 0;
 }

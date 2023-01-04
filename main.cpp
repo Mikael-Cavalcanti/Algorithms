@@ -25,26 +25,33 @@ struct Student
     string name;
     int time;
 
-    bool operator<(const Student &b)
+    bool operator<=(const Student &b)
     {
-        if (name < b.name)
+        if (time <= b.time)
+            return true;
+        else if (name <= b.name && time == b.time)
+            return true;
+        else if (name == b.name && time == b.time)
             return true;
 
         return false;
     }
 
-    int operator+(const Student &b)
+    bool operator>=(const Student &b)
     {
-        return time + b.time;
+        return (time >= b.time || (name >= b.name && time == b.time) || (name == b.name && time == b.time));
     }
 };
 
 int main(int argc, char const *argv[])
 {
     Student a, b;
-    a.time = 5;
-    b.time = 2;
-    cout << "soma: " << (a + b) << endl;
+    a.name = "mikael";
+    b.name = "ana";
+    a.time = 6;
+    b.time = 6;
+
+    cout << "eh menor ou igual? " << (a >= b) << endl;
 
     return 0;
 }

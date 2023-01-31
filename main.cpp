@@ -43,6 +43,8 @@ struct Student
     }
 };
 
+//&(significa que essa variável está sendo passando como referência e não como cópia)
+
 int main(int argc, char const *argv[])
 {
     Student a, b;

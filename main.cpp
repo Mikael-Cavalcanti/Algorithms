@@ -7,6 +7,8 @@
 #include "BSearch.hpp"
 #include "MergeSort.hpp"
 
+#include "Test1.hpp"
+
 #include <string>
 
 template <class T>
@@ -47,13 +49,16 @@ struct Student
 
 int main(int argc, char const *argv[])
 {
-    Student a, b;
-    a.name = "mikael";
-    b.name = "ana";
-    a.time = 6;
-    b.time = 6;
+    // Student a, b;
+    // a.name = "mikael";
+    // b.name = "ana";
+    // a.time = 6;
+    // b.time = 6;
 
-    cout << "eh menor ou igual? " << (a >= b) << endl;
+    // cout << "eh menor ou igual? " << (a >= b) << endl;
+
+    Test1 *var = new Test1();
+    var->Print();
 
     return 0;
 }

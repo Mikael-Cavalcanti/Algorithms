@@ -16,8 +16,8 @@ public:
 public:
     virtual void Clear();
     virtual void Insert(const E &item) = 0;
-    void Append(const E &item) = 0;
-    T Remove() = 0;
+    virtual void Append(const E &item) = 0;
+    virtual void Remove() = 0;
     virtual void MoveToStart() = 0;
     virtual void MoveToEnd() = 0;
     virtual void Prev() = 0;

@@ -55,11 +55,5 @@ int main(int argc, char const *argv[])
 
     // cout << "eh menor ou igual? " << (a >= b) << endl;
 
-    cerr << "error!" << endl;
-
-    int *v = new int[1]{10};
-
-    cout << "v[0] =" << v[0] << endl;
-
     return 0;
 }

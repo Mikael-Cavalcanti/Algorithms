@@ -6,6 +6,7 @@
 #include "BSearchRecursive.hpp"
 #include "BSearch.hpp"
 #include "MergeSort.hpp"
+#include "AList.hpp"
 
 #include <string>
 
@@ -54,6 +55,9 @@ int main(int argc, char const *argv[])
     // b.time = 6;
 
     // cout << "eh menor ou igual? " << (a >= b) << endl;
+    AList<int> *list = new AList<int>(2);
+    
+    cout << list->Length() << endl;
 
     return 0;
 }

@@ -7,6 +7,7 @@
 #include "BSearch.hpp"
 #include "MergeSort.hpp"
 #include "AList.hpp"
+#include "LList.hpp"
 
 #include <string>
 
@@ -55,10 +56,9 @@ int main(int argc, char const *argv[])
     // b.time = 6;
 
     // cout << "eh menor ou igual? " << (a >= b) << endl;
-    AList<int> *list = new AList<int>(2);
-    // list->Insert(0);
-    // list->Insert(1);
-    list->Print();
-
+    LList<int> *ll = new LList<int>(2);
+    ll->Insert(1);
+    ll->Append(2);
+    cout << "Length : " << ll->Length() << endl;
     return 0;
 }

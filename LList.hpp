@@ -3,8 +3,9 @@
 
 #include "List.hpp"
 #include "Node.hpp"
+#include <iostream>
 
-#define defaultSize 0
+using namespace std;
 
 template <class T>
 class LList : List<T>
@@ -33,11 +34,11 @@ private:
     }
 
 public:
-    LList(int size = defaultSize)
+    LList(int size = 0)
     {
         Init();
     }
-    ~List() { RemoveAll(); }
+    ~LList() { RemoveAll(); }
 
 public:
     void Print() const;
@@ -56,7 +57,8 @@ public:
     }
     void Append(const T &item)
     {
-        tail = tail->next
+        tail = tail->next;
+        size++;
     }
     void Remove()
     {
@@ -69,7 +71,7 @@ public:
         curr->next = curr->next->next;
         delete ltemp;
         size--;
-        return it;
+        cout << "removed item : " << it << endl;
     }
     void MoveToStart()
     {
@@ -84,7 +86,7 @@ public:
         if (curr == head)
             return;
         Node<T> *temp = head;
-        while (temp.next != curr)
+        while (temp->next != curr)
             temp = temp->next;
         curr = temp;
     }
@@ -120,6 +122,22 @@ public:
     {
         return curr->next->element;
     }
-    bool Find(T value) {}
+    bool Find(T value)
+    {
+        for (MoveToStart(); CurrPos() < Length(); Next())
+        {
+            if (value == curr->element)
+                return true;
+        }
+
+        return false;
+    }
+    void Print()
+    {
+        for (MoveToStart(); CurrPos() < Length(); Next())
+        {
+            cout << "List[" << CurrPos() << "] " << curr->element << endl;
+        }
+    }
 };
 #endif

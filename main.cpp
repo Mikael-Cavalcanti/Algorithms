@@ -56,8 +56,9 @@ int main(int argc, char const *argv[])
 
     // cout << "eh menor ou igual? " << (a >= b) << endl;
     AList<int> *list = new AList<int>(2);
-    
-    cout << list->Length() << endl;
+    // list->Insert(0);
+    // list->Insert(1);
+    list->Print();
 
     return 0;
 }

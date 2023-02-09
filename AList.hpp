@@ -35,8 +35,10 @@ public:
     }
     void Insert(const T &item)
     {
-        if (listSize > maxSize)
-            return;
+        if (listSize >= maxSize)
+        {
+            cout << "Range of out" << endl;
+        }
         for (int i = listSize; i > curr; i--)
             listArray[i] = listArray[i - 1];
         listArray[curr] = item;
@@ -45,7 +47,7 @@ public:
     void Append(const T &item)
     {
         if (listSize >= maxSize)
-            return;
+            cout << "list out of range" << endl;
         listArray[listSize++] = item;
     }
     void Remove()
@@ -82,9 +84,13 @@ public:
     int CurrPos() const { return curr; }
     void MoveToPos(int pos)
     {
-        if ((pos >= 0) && (pos <= listSize))
+        if ((pos >= 0) && (pos < listSize))
         {
             curr = pos;
+        }
+        else
+        {
+            cout << "Pos Out of range" << endl;
         }
     }
     const T &GetValue() const

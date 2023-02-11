@@ -1,15 +1,8 @@
-#include "SelectionSort.hpp"
-#include "BubbleSort.hpp"
-#include "InsertionSort.hpp"
-#include "Swap.hpp"
-#include "QuickSort.hpp"
-#include "BSearchRecursive.hpp"
-#include "BSearch.hpp"
-#include "MergeSort.hpp"
-#include "AList.hpp"
-#include "LList.hpp"
 
-#include <string>
+#include "LStack.hpp"
+#include <iostream>
+
+using namespace std;
 
 template <class T>
 void PrintVector(T v[], int size)
@@ -47,18 +40,18 @@ struct Student
 
 //&(significa que essa variável está sendo passando como referência e não como cópia)
 
+// example to return default value type T
+template <class T>
+const T &ReturnValue()
+{
+    static const T value = T();
+    return value;
+}
+
 int main(int argc, char const *argv[])
 {
-    // Student a, b;
-    // a.name = "mikael";
-    // b.name = "ana";
-    // a.time = 6;
-    // b.time = 6;
+    LStack<int> *stack = new LStack<int>();
+    cout << stack->Length() << endl;
 
-    // cout << "eh menor ou igual? " << (a >= b) << endl;
-    LList<int> *ll = new LList<int>(2);
-    ll->Insert(1);
-    ll->Append(2);
-    cout << "Length : " << ll->Length() << endl;
     return 0;
 }

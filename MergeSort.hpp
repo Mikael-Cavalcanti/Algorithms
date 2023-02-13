@@ -11,7 +11,7 @@ private:
     T *temp;
 
 private:
-    void Merge(T arr[], int left, int right)
+    void Merge(T *arr, int left, int right)
     {
         for (int i = left; i <= right; i++)
             temp[i] = arr[i];
@@ -44,17 +44,18 @@ public:
     {
         delete temp;
     }
-    void Sort(T arr[], int left, int right)
+
+    void Sort(T *arr, int left, int right)
     {
-        if (!(left < right))
-            return;
+        if (left < right)
+        {
+            int middle;
 
-        int middle;
-
-        middle = (left + right) / 2;
-        Sort(arr, left, middle);
-        Sort(arr, middle + 1, right);
-        Merge(arr, left, middle);
+            middle = (left + right) / 2;
+            Sort(arr, left, middle);
+            Sort(arr, middle + 1, right);
+            Merge(arr, left, right);
+        }
     }
 };
 

@@ -1,5 +1,5 @@
 
-#include "QuickSort.hpp"
+#include "MergeSort.hpp"
 
 #include <iostream>
 
@@ -71,37 +71,51 @@ void CompleteList(T *list, int lenght)
 
 int main(int argc, char const *argv[])
 {
-    QuickSort<long long int> *sort = new QuickSort<long long int>();
-    int amountChocolate;
-    long long int *priceList;
-    int amountCupons;
-    int *barCanBuyList;
+    // MergeSort<long long int> *mergeSort;
+    // int amountChocolate;
+    // long long int *priceList;
+    // int amountCupons;
+    // int *barCanBuyList;
 
-    cin >> amountChocolate;
+    // cin >> amountChocolate;
 
-    priceList = new long long int[amountChocolate];
+    // priceList = new long long int[amountChocolate];
 
-    CompleteList<long long int>(priceList, amountChocolate);
+    // CompleteList<long long int>(priceList, amountChocolate);
 
-    sort->Sort(priceList, 0, amountChocolate - 1);
+    // mergeSort = new MergeSort<long long int>(amountChocolate - 1);
+    // mergeSort->Sort(priceList, 0, amountChocolate - 1);
 
-    cin >> amountCupons;
+    // PrintVector(priceList, amountChocolate);
 
-    barCanBuyList = new int[amountCupons];
+    // cin >> amountCupons;
 
-    CompleteList(barCanBuyList, amountCupons);
+    // barCanBuyList = new int[amountCupons];
 
-    for (int i = 0; i < amountCupons; i++)
-    {
-        int divisionList = 0;
-        long long int resultSum = 0;
+    // CompleteList(barCanBuyList, amountCupons);
 
-        divisionList = (amountChocolate - barCanBuyList[i]);
+    // for (int i = 0; i < amountCupons; i++)
+    // {
+    //     int divisionList = 0;
+    //     long long int resultSum = 0;
 
-        resultSum = SumList(priceList, 0, divisionList, amountChocolate);
+    //     divisionList = (amountChocolate - barCanBuyList[i]);
 
-        cout << resultSum << endl;
-    }
+    //     resultSum = SumList(priceList, 0, divisionList, amountChocolate);
+
+    //     cout << resultSum << endl;
+    // }
+
+    int v[] = {5, 2, 0, 1};
+
+    PrintVector(v, 4);
+
+    MergeSort<int> *sort = new MergeSort<int>(4);
+    sort->Sort(v, 0, 3);
+
+    PrintVector(v, 4);
+
+    cout << (int)(7 / 2) << endl;
 
     return 0;
 }

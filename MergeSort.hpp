@@ -13,10 +13,10 @@ private:
 private:
     void Merge(T arr[], int left, int right)
     {
-        int middle, i1, i2;
-
         for (int i = left; i <= right; i++)
             temp[i] = arr[i];
+
+        int middle, i1, i2;
 
         middle = (left + right) / 2;
         i1 = left;
@@ -46,15 +46,15 @@ public:
     }
     void Sort(T arr[], int left, int right)
     {
+        if (!(left < right))
+            return;
+
         int middle;
 
-        if (left < right)
-        {
-            middle = (left + right) / 2;
-            Sort(arr, left, middle);
-            Sort(arr, middle + 1, right);
-            Merge(arr, left, middle);
-        }
+        middle = (left + right) / 2;
+        Sort(arr, left, middle);
+        Sort(arr, middle + 1, right);
+        Merge(arr, left, middle);
     }
 };
 

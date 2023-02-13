@@ -1,5 +1,6 @@
 
-#include "LStack.hpp"
+#include "QuickSort.hpp"
+
 #include <iostream>
 
 using namespace std;
@@ -48,10 +49,59 @@ const T &ReturnValue()
     return value;
 }
 
+const long long int SumList(long long int list[], int initialIndex, int division, int finalIndex)
+{
+    long long int sum = 0;
+
+    for (int i = initialIndex; i < finalIndex; i++)
+    {
+        if (i != division)
+            sum += list[i];
+    }
+
+    return sum;
+}
+
+template <class T>
+void CompleteList(T *list, int lenght)
+{
+    for (int i = 0; i < lenght; i++)
+        cin >> list[i];
+}
+
 int main(int argc, char const *argv[])
 {
-    LStack<int> *stack = new LStack<int>();
-    cout << stack->Length() << endl;
+    QuickSort<long long int> *sort = new QuickSort<long long int>();
+    int amountChocolate;
+    long long int *priceList;
+    int amountCupons;
+    int *barCanBuyList;
+
+    cin >> amountChocolate;
+
+    priceList = new long long int[amountChocolate];
+
+    CompleteList<long long int>(priceList, amountChocolate);
+
+    sort->Sort(priceList, 0, amountChocolate - 1);
+
+    cin >> amountCupons;
+
+    barCanBuyList = new int[amountCupons];
+
+    CompleteList(barCanBuyList, amountCupons);
+
+    for (int i = 0; i < amountCupons; i++)
+    {
+        int divisionList = 0;
+        long long int resultSum = 0;
+
+        divisionList = (amountChocolate - barCanBuyList[i]);
+
+        resultSum = SumList(priceList, 0, divisionList, amountChocolate);
+
+        cout << resultSum << endl;
+    }
 
     return 0;
 }

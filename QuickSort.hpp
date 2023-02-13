@@ -37,6 +37,8 @@ public:
     ~QuickSort()
     {
     }
+
+    // left is index 0 and right is (length -1)
     void Sort(T array[], int left, int right)
     {
 

@@ -1,5 +1,4 @@
 
-#include <QuickSort.hpp>
 #include <iostream>
 
 using namespace std;
@@ -48,7 +47,13 @@ const T &ReturnValue()
     return value;
 }
 
+#include "LQueue.hpp"
+
 int main(int argc, char const *argv[])
 {
+    LQueue<int> *queue = new LQueue<int>();
+
+    
+
     return 0;
 }

@@ -7,6 +7,8 @@
 
 using namespace std;
 
+#define defaultSize 0
+
 template <class T>
 class LList : List<T>
 {
@@ -25,7 +27,7 @@ private:
 
     void RemoveAll()
     {
-        while (head != NULL)
+        while (head != nullptr)
         {
             curr = head;
             head = head->next;
@@ -34,36 +36,38 @@ private:
     }
 
 public:
-    LList(int size = 0)
+    LList(int size = defaultSize)
     {
         Init();
     }
     ~LList() { RemoveAll(); }
 
 public:
-    void Print() const;
-    void Clear()
+    void Clear() override
     {
         RemoveAll();
         Init();
     }
 
-    void Insert(const T &item)
+    void Insert(const T &item) override
     {
         curr->next = new Node<T>(item, curr->next);
         if (tail == curr)
             tail = curr->next;
         size++;
     }
-    void Append(const T &item)
+    void Append(const T &item) override
     {
-        tail = tail->next;
+        tail = tail->next = new Node<T>(item);
         size++;
     }
-    void Remove()
+    void Remove() override
     {
         if (curr->next == NULL)
+        {
+            cerr << "Empty List" << endl;
             return;
+        }
         T it = curr->next->element;
         Node<T> *ltemp = curr->next;
         if (tail == curr->next)
@@ -73,15 +77,15 @@ public:
         size--;
         cout << "removed item : " << it << endl;
     }
-    void MoveToStart()
+    void MoveToStart() override
     {
         curr = head;
     }
-    void MoveToEnd()
+    void MoveToEnd() override
     {
         curr = tail;
     }
-    void Prev()
+    void Prev() override
     {
         if (curr == head)
             return;
@@ -90,18 +94,18 @@ public:
             temp = temp->next;
         curr = temp;
     }
-    void Next()
+    void Next() override
     {
         if (curr != tail)
         {
             curr = curr->next;
         }
     }
-    int Length() const
+    int Length() const override
     {
         return size;
     }
-    int CurrPos() const
+    int CurrPos() const override
     {
         Node<T> *temp = head;
         int i;
@@ -109,24 +113,30 @@ public:
             temp = temp->next;
         return i;
     }
-    void MoveToPos(int pos)
+    void MoveToPos(int pos) override
     {
-        if ((pos >= 0) && (pos <= size))
+        if ((pos < 0) && (pos >= size))
         {
-            curr = head;
-            for (int i = 0; i < pos; i++)
-                curr = curr->next;
+            cerr << "Position out of Range" << endl;
+            return;
         }
+
+        curr = head;
+        for (int i = 0; i < pos; i++)
+            curr = curr->next;
     }
-    const T &GetValue() const
+    const T &GetValue() const override
     {
+        if (curr->next == nullptr)
+            throw EmptyListException();
+
         return curr->next->element;
     }
-    bool Find(T value)
+    bool Find(T value) override
     {
         for (MoveToStart(); CurrPos() < Length(); Next())
         {
-            if (value == curr->element)
+            if (value == GetValue())
                 return true;
         }
 
@@ -134,10 +144,26 @@ public:
     }
     void Print()
     {
+        cout << endl
+             << "[ ";
         for (MoveToStart(); CurrPos() < Length(); Next())
         {
-            cout << "List[" << CurrPos() << "] " << curr->element << endl;
+            cout << GetValue() << " ";
         }
+        cout << "]" << endl;
     }
+
+#pragma region Exception
+
+    class EmptyListException : public std::exception
+    {
+    public:
+        virtual const char *What() const noexcept
+        {
+            return "Error: List is empty!";
+        }
+    };
+
+#pragma endregion
 };
 #endif

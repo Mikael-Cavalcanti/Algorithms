@@ -47,13 +47,19 @@ const T &ReturnValue()
     return value;
 }
 
-#include "LQueue.hpp"
+#include "LStack.hpp"
+#include "StationManager.hpp"
 
 int main(int argc, char const *argv[])
 {
-    LQueue<int> *queue = new LQueue<int>();
+    int n;
 
-    
+    cout << "Insira o tamanho do Trem: ";
+    cin >> n;
+
+    StationManager<int> *manager = new StationManager<int>(n);
+
+    manager->~StationManager();
 
     return 0;
 }

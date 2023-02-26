@@ -1,6 +1,8 @@
 #ifndef BINARY_SEARCH_RECURSIVE
 #define BINARY_SEARCH_RECURSIVE
 
+#include <iostream>
+
 template <class T>
 class BSearchRecursive
 {
@@ -9,6 +11,8 @@ public:
     ~BSearchRecursive() {}
     bool Search(T array[], int left, int right, T &Key)
     {
+
+        std::cout << "interation" << endl;
         int middle;
 
         if (right >= left)

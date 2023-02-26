@@ -12,11 +12,12 @@ public:
     ~BSearch()
     {
     }
-    bool Find(T array[], int left, int right, T &key)
+    bool Find(T array[], int left, int right, const T &key)
     {
         int middle;
         while (left <= right)
         {
+            cout << "interation" << endl;
             middle = (left + right) / 2;
             if (key == array[middle])
                 return true;

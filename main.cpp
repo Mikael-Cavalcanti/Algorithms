@@ -50,38 +50,53 @@ const T &ReturnValue()
 #include <cmath>
 #include "LStack.hpp"
 #include "StationManager.hpp"
-#include "HasDic.hpp"
-#include "BSearchRecursive.hpp"
-template <class T>
-void Func(int (*hash)(T), T value)
-{
-    cout << hash() << endl;
-}
-
-int Sum(int value)
-{
-    return value + value;
-}
 
 int main(int argc, char const *argv[])
 {
-    // int n;
+    int n, *order;
+    bool orderEmpty;
+    StationManager<int> *manager = nullptr;
 
-    // cout << "Insira o tamanho do Trem: ";
-    // cin >> n;
-
-    // StationManager<int> *manager = new StationManager<int>(n);
-
-    // manager->~StationManager();
-    int *array = new int[100];
-
-    for (int i = 0; i < 100; i++)
+    do
     {
-        array[i] = i;
-    }
+        orderEmpty = false;
+        cout << "Insira o tamanho do Trem: ";
+        cin >> n;
 
-    BSearchRecursive<int> *bSearch = new BSearchRecursive<int>();
-    // bSearch->Search(array, 0, 99)
+        if (n != 0)
+        {
+            manager = new StationManager<int>(n);
+
+            do
+            {
+                cout << "digite a ordem: ";
+
+                order = new int[n];
+
+                for (int i = 0; i < n; i++)
+                {
+                    cin >> order[i];
+                    if (order[i] == 0)
+                    {
+                        orderEmpty = true;
+                        break;
+                    }
+                }
+
+                if (!orderEmpty)
+                {
+                    manager->SetOrder(order);
+                    manager->Start();
+                    manager->Reset();
+                }
+
+            } while (!orderEmpty);
+        }
+        cout << endl;
+
+    } while (n != 0);
+
+    manager->~StationManager();
 
     return 0;
 }

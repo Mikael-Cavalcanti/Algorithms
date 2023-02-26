@@ -24,11 +24,13 @@ public:
         while (!IsEmpty())
             Pop();
     }
+    //Insert Item on stack
     void Push(const T &it)
     {
         top = new Node<T>(it, top);
         size++;
     }
+    //Remove Item of stack
     T Pop()
     {
         if (top == nullptr)

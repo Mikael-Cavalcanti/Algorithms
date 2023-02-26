@@ -6,35 +6,83 @@
 using namespace std;
 
 #include "LStack.hpp"
-#include "LList.hpp"
 
 template <class T>
 class StationManager
 {
 private:
-    int currentIndex, sizeTrain;
-    LList<T> *trainA, *trainB;
-    Stack<T> *station;
+    int currentIndex, sizeTrain, sizeTrainB;
+    T *trainA, *trainB, *order;
+    LStack<T> *station;
+    bool hasSolution;
 
 private:
     void Init()
     {
-        trainA = new LList<T>();
-        trainB = new LList<T>();
+        trainA = new int[sizeTrain];
+        trainB = new int[sizeTrain];
+
+        for (int i = 0; i < sizeTrain; i++)
+        {
+            trainB[i] = 0;
+        }
     }
 
     void MakeTrain()
     {
-        for (int i = 1; i <= sizeTrain; i++)
-            trainA->Append(i);
+        for (int i = 0; i < sizeTrain; i++)
+            trainA[i] = (i + 1);
 
-        trainA->Print();
+        PrintTrain(trainA);
+    }
+
+    void PrintTrain(T *train)
+    {
+        cout << "O";
+        for (int j = 0; j < sizeTrain; j++)
+            cout << "--[" << train[j] << "]";
+        cout << endl;
+    }
+
+    void AddOnStation()
+    {
+        cout << "Add on Station[" << currentIndex << "] = " << trainA[currentIndex] << endl;
+        station->Push(trainA[currentIndex]);
+        currentIndex++;
+    }
+
+    void RemoveOfStation()
+    {
+        if (station->Length() == 0)
+        {
+            T value = station->Pop();
+            cout << "Add on Train B: [" << currentIndex << "] = " << value << endl;
+            trainB[currentIndex] = value;
+            PrintTrain(trainB);
+        }
+    }
+
+    void VerifySolution() const
+    {
+        if ((station->Length() + sizeTrainB) == sizeTrain)
+            hasSolution = false;
+    }
+
+    void ShowResult()
+    {
+        if (hasSolution)
+            cout << "Yes" << endl;
+        else
+            cout << "No" << endl;
     }
 
 public:
     StationManager(const int &szTrain)
     {
         this->sizeTrain = szTrain;
+        currentIndex = 0;
+        hasSolution = true;
+        station = new LStack<T>();
         Init();
         MakeTrain();
     }
@@ -42,27 +90,59 @@ public:
     {
         delete trainA;
         delete trainB;
+        delete order;
         delete station;
         cout << endl
              << "finish Program" << endl;
     }
 
 public:
-    /*
-    - array trem - stack station - array new trem
+    void Start()
+    {
+        do
+        {
+            AddOnStation();
+            // bool isOrder = true;
+            // while (station->Length() > 0 || isOrder)
+            // {
+            //     cout << "opa2" << endl;
 
-    1 - pego o vagão;
-    - coloco na station;
-    - verifico se está na ordem;
-    - se estiver coloco no novo trem até terminar os trens da estaçao;
-    - caso a station não esteja vazia;
-    - caso a soma do tamanho da station + B = n, não tem solução;
-    2 - volto para o passo até que a station esteja vazia ou não tenha solução;
+            //     if (station->TopValue() == order[currentIndex++])
+            //     {
+            //         RemoveOfStation();
+            //     }
+            //     else
+            //         isOrder = false;
+            // }
 
-    add in station
-    remove in station
-    verify order
-    */
+        } while ((currentIndex < sizeTrain) && (hasSolution));
+
+        ShowResult();
+    }
+
+    void Reset()
+    {
+        for (int i = 0; i < sizeTrain; i++)
+        {
+            trainB[i] = 0;
+        }
+        currentIndex = 0;
+        hasSolution = true;
+        station = new LStack<T>();
+        trainB = new int[sizeTrain];
+
+        for (int i = 0; i < sizeTrain; i++)
+        {
+            trainB[i] = 0;
+        }
+    }
+
+    void SetOrder(T *array)
+    {
+        order = array;
+
+        // cout << "Order" << endl;
+        // PrintTrain(order);
+    }
 };
-
 #endif

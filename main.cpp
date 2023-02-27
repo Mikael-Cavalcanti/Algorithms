@@ -60,7 +60,7 @@ int main(int argc, char const *argv[])
     do
     {
         orderEmpty = false;
-        cout << "Insira o tamanho do Trem: ";
+        // cout << "Insira o tamanho do Trem: ";
         cin >> n;
 
         if (n != 0)
@@ -69,7 +69,7 @@ int main(int argc, char const *argv[])
 
             do
             {
-                cout << "digite a ordem: ";
+                // cout << "digite a ordem: ";
 
                 order = new int[n];
 

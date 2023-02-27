@@ -14,7 +14,6 @@ private:
     int currentIndex, sizeTrain, sizeTrainB;
     T *trainA, *trainB, *order;
     LStack<T> *station;
-    bool hasSolution;
 
 private:
     void Init()
@@ -33,7 +32,7 @@ private:
         for (int i = 0; i < sizeTrain; i++)
             trainA[i] = (i + 1);
 
-        PrintTrain(trainA);
+        // PrintTrain(trainA);
     }
 
     void PrintTrain(T *train)
@@ -46,31 +45,29 @@ private:
 
     void AddOnStation()
     {
-        cout << "Add on Station[" << currentIndex << "] = " << trainA[currentIndex] << endl;
+        // cout << "Add on Station[" << currentIndex << "] = " << trainA[currentIndex] << endl;
         station->Push(trainA[currentIndex]);
-        currentIndex++;
     }
 
     void RemoveOfStation()
     {
-        if (station->Length() == 0)
-        {
-            T value = station->Pop();
-            cout << "Add on Train B: [" << currentIndex << "] = " << value << endl;
-            trainB[currentIndex] = value;
-            PrintTrain(trainB);
-        }
+        T value = station->Pop();
+        // cout << "Add on Train B: [" << currentIndex << "] = " << value << endl;
+        sizeTrainB++;
+        trainB[currentIndex] = value;
+        // PrintTrain(trainB);
     }
 
-    void VerifySolution() const
+    bool Completed()
     {
-        if ((station->Length() + sizeTrainB) == sizeTrain)
-            hasSolution = false;
+        bool value = (sizeTrainB == sizeTrain) && station->Length() == 0;
+        // cout << "hasSolution: " << value << endl;
+        return value;
     }
 
     void ShowResult()
     {
-        if (hasSolution)
+        if ((sizeTrainB == sizeTrain) && (station->Length() == 0))
             cout << "Yes" << endl;
         else
             cout << "No" << endl;
@@ -81,7 +78,6 @@ public:
     {
         this->sizeTrain = szTrain;
         currentIndex = 0;
-        hasSolution = true;
         station = new LStack<T>();
         Init();
         MakeTrain();
@@ -102,32 +98,32 @@ public:
         do
         {
             AddOnStation();
-            // bool isOrder = true;
-            // while (station->Length() > 0 || isOrder)
-            // {
-            //     cout << "opa2" << endl;
+            bool isOrder = true;
+            while (station->Length() > 0 && isOrder)
+            {
+                if (station->TopValue() == trainA[currentIndex])
+                {
+                    RemoveOfStation();
+                    currentIndex++;
+                }
+                else
+                    isOrder = false;
+            }
 
-            //     if (station->TopValue() == order[currentIndex++])
-            //     {
-            //         RemoveOfStation();
-            //     }
-            //     else
-            //         isOrder = false;
-            // }
+            if (!isOrder)
+                currentIndex;
 
-        } while ((currentIndex < sizeTrain) && (hasSolution));
+        } while ((currentIndex < sizeTrain) && (!Completed()));
 
+        // cout << "TrainB" << endl;
+        // PrintTrain(trainB);
         ShowResult();
     }
 
     void Reset()
     {
-        for (int i = 0; i < sizeTrain; i++)
-        {
-            trainB[i] = 0;
-        }
+        // cout << "Reseted" << endl;
         currentIndex = 0;
-        hasSolution = true;
         station = new LStack<T>();
         trainB = new int[sizeTrain];
 

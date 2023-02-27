@@ -31,8 +31,6 @@ private:
     {
         for (int i = 0; i < sizeTrain; i++)
             trainA[i] = (i + 1);
-
-        // PrintTrain(trainA);
     }
 
     void PrintTrain(T *train)
@@ -45,23 +43,19 @@ private:
 
     void AddOnStation()
     {
-        // cout << "Add on Station[" << currentIndex << "] = " << trainA[currentIndex] << endl;
         station->Push(trainA[currentIndex]);
     }
 
     void RemoveOfStation()
     {
         T value = station->Pop();
-        // cout << "Add on Train B: [" << currentIndex << "] = " << value << endl;
         sizeTrainB++;
         trainB[currentIndex] = value;
-        // PrintTrain(trainB);
     }
 
     bool Completed()
     {
         bool value = (sizeTrainB == sizeTrain) && station->Length() == 0;
-        // cout << "hasSolution: " << value << endl;
         return value;
     }
 
@@ -88,8 +82,6 @@ public:
         delete trainB;
         delete order;
         delete station;
-        // cout << endl
-        //      << "finish Program" << endl;
     }
 
 public:
@@ -115,14 +107,11 @@ public:
 
         } while ((currentIndex < sizeTrain) && (!Completed()));
 
-        // cout << "TrainB" << endl;
-        // PrintTrain(trainB);
         ShowResult();
     }
 
     void Reset()
     {
-        // cout << "Reseted" << endl;
         currentIndex = 0;
         station = new LStack<T>();
         trainB = new int[sizeTrain];
@@ -136,9 +125,6 @@ public:
     void SetOrder(T *array)
     {
         order = array;
-
-        // cout << "Order" << endl;
-        // PrintTrain(order);
     }
 };
 #endif

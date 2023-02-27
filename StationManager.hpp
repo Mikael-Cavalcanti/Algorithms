@@ -53,7 +53,7 @@ private:
         trainB[currentIndex] = value;
     }
 
-    bool Completed()
+    bool HasSolution()
     {
         bool value = (sizeTrainB == sizeTrain) && station->Length() == 0;
         return value;
@@ -85,7 +85,7 @@ public:
     }
 
 public:
-    void Start()
+    void Run()
     {
         do
         {
@@ -105,7 +105,7 @@ public:
             if (!isOrder)
                 currentIndex;
 
-        } while ((currentIndex < sizeTrain) && (!Completed()));
+        } while ((currentIndex < sizeTrain) && (!HasSolution()));
 
         ShowResult();
     }

@@ -83,7 +83,7 @@ int main(int argc, char const *argv[])
                 if (!orderEmpty)
                 {
                     manager->SetOrder(order);
-                    manager->Start();
+                    manager->Run();
                     manager->Reset();
                 }
 

@@ -92,11 +92,17 @@ int main(int argc, char const *argv[])
 
             } while (!orderEmpty);
         }
+        else
+        {
+            manager->~StationManager();
+            manager = nullptr;
+        }
         cout << endl;
 
     } while (n != 0);
 
-    manager->~StationManager();
+    if (n != 0)
+        manager->~StationManager();
 
     return 0;
 }

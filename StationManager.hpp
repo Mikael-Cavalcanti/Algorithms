@@ -88,8 +88,8 @@ public:
         delete trainB;
         delete order;
         delete station;
-        cout << endl
-             << "finish Program" << endl;
+        // cout << endl
+        //      << "finish Program" << endl;
     }
 
 public:

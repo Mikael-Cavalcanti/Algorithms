@@ -14,7 +14,9 @@ public:
 
 public:
     virtual void Clear() = 0;
+    //Insert Value in Queue
     virtual void Enqueue(const T &) = 0;
+    //Remove Value in Queue
     virtual T Dequeue() = 0;
     virtual const T &FrontValue() const = 0;
     virtual int Length() const = 0;

@@ -4,6 +4,7 @@
         "ostream": "cpp",
         "bitset": "cpp",
         "*.tcc": "cpp",
-        "list": "cpp"
+        "list": "cpp",
+        "string": "cpp"
     }
 }

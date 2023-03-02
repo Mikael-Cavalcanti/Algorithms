@@ -236,6 +236,7 @@ private:
     }
     void ButtonHome(string &text)
     {
+        //  cout << "Apertei Home" << endl;
         string aux;
 
         for (; currentIndex < text.length(); currentIndex++)
@@ -251,6 +252,7 @@ private:
 
     void ButtonEnd(string &text)
     {
+        // cout << "Apertei End" << endl;
         string aux;
 
         for (; currentIndex < text.length(); currentIndex++)

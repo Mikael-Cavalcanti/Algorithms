@@ -206,28 +206,91 @@ public:
 };
 #endif
 
+#define END ']'
+#define HOME '['
+
 class ResolveString
 {
 private:
-    string middle;
+    int currentIndex;
+    string middleText;
     LQueue<string> *end;
     LStack<string> *home;
 
 private:
-    void ButtonHome()
+    void ControllerButtons(string &text)
     {
+        while (currentIndex < text.length())
+        {
+            if (text[currentIndex] == HOME)
+            {
+                currentIndex++;
+                ButtonHome(text);
+            }
+            else if (text[currentIndex] == END)
+            {
+                currentIndex++;
+                ButtonEnd(text);
+            }
+        }
+    }
+    void ButtonHome(string &text)
+    {
+        string aux;
+
+        for (; currentIndex < text.length(); currentIndex++)
+        {
+            if (text[currentIndex] == HOME || text[currentIndex] == END)
+                break;
+            else
+                aux += text[currentIndex];
+        }
+
+        home->Push(aux);
     }
 
-    void ButtonEnd()
+    void ButtonEnd(string &text)
     {
+        string aux;
+
+        for (; currentIndex < text.length(); currentIndex++)
+        {
+            if (text[currentIndex] == HOME || text[currentIndex] == END)
+                break;
+            else
+                aux += text[currentIndex];
+        }
+        end->Enqueue(aux);
     }
 
-    void MiddleText()
+    void SetMiddleText(string &text)
     {
+        for (currentIndex = 0; currentIndex < text.length() - 1; currentIndex++)
+        {
+            if (text[currentIndex] == HOME || text[currentIndex] == END)
+            {
+                middleText = text.substr(0, currentIndex);
+                break;
+            }
+        }
+        // cout << "index [" << currentIndex << "]: " << text[currentIndex] << endl;
     }
 
     void ShowResolution()
     {
+        while (home->Length() != 0)
+        {
+            cout << home->Pop();
+        }
+
+        cout << middleText;
+
+        while (end->Length() != 0)
+        {
+            cout << end->Dequeue();
+        }
+
+        cout << endl;
     }
 
 public:
@@ -235,6 +298,7 @@ public:
     {
         end = new LQueue<string>();
         home = new LStack<string>();
+        currentIndex = 0;
     }
     ~ResolveString()
     {
@@ -245,8 +309,12 @@ public:
 public:
     void RunResolution(string &text)
     {
+        // core function
+        SetMiddleText(text);
+        ControllerButtons(text);
 
-        cout << middle << endl;
+        // show result
+        ShowResolution();
     }
 };
 

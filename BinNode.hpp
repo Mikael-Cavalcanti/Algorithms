@@ -1,18 +1,19 @@
 #ifndef BIN_NODE
 #define BIN_NODE
 
-#include "TreeNode.hpp"
-
-// Binary tree node
-template <class Key, class T>
-class BinNode : public TreeNode<Key, T>
+template <typename T>
+class BinNode
 {
 public:
-    BinNode() {}
-    ~BinNode() {}
-
+    virtual ~BinNode() {} // base destructor
 public:
-
+    virtual T &GetElement() = 0;
+    virtual void SetElement(const T &) = 0;
+    virtual BinNode *Left() const = 0;
+    virtual BinNode *Right() const = 0;
+    virtual void SetLeft(BinNode *) = 0;
+    virtual void SetRight(BinNode *) = 0;
+    virtual bool IsLeaf() = 0;
 };
 
 #endif

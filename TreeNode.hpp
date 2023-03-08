@@ -1,14 +1,12 @@
 #ifndef TREE_NODE_BASE
 #define TREE_NODE_BASE
 
-template <class Key, class T>
+template <class T>
 class TreeNode
 {
 protected:
-    Key key;
-    T element;
-    TreeNode<Key, T> *left;
-    TreeNode<key, T> *right;
+    TreeNode<T> *left;
+    TreeNode<T> *right;
 
 public:
     virtual ~TreeNode() {}

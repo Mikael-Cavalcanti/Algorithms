@@ -5,6 +5,7 @@
         "bitset": "cpp",
         "*.tcc": "cpp",
         "list": "cpp",
-        "string": "cpp"
+        "string": "cpp",
+        "array": "cpp"
     }
 }

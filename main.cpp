@@ -16,9 +16,11 @@ void PrintVector(T v[], int size)
 
 struct Student
 {
+public:
     string name;
     int time;
 
+public:
     bool operator<=(const Student &b)
     {
         if (time <= b.time)
@@ -48,58 +50,11 @@ const T &ReturnValue()
 }
 
 #include <cmath>
-#include "LStack.hpp"
-#include "StationManager.hpp"
+#include "HashDic.hpp"
+#include "BSTNode.hpp"
 
 int main(int argc, char const *argv[])
 {
-    int n, *order;
-    bool orderEmpty;
-    StationManager<int> *manager = nullptr;
-
-    do
-    {
-        orderEmpty = false;
-        cin >> n;
-
-        if (n != 0)
-        {
-            manager = new StationManager<int>(n);
-
-            do
-            {
-                order = new int[n];
-
-                for (int i = 0; i < n; i++)
-                {
-                    cin >> order[i];
-                    if (order[i] == 0)
-                    {
-                        orderEmpty = true;
-                        break;
-                    }
-                }
-
-                if (!orderEmpty)
-                {
-                    manager->SetOrder(order);
-                    manager->Run();
-                    manager->Reset();
-                }
-
-            } while (!orderEmpty);
-        }
-        else
-        {
-            manager->~StationManager();
-            manager = nullptr;
-        }
-        cout << endl;
-
-    } while (n != 0);
-
-    if (n != 0)
-        manager->~StationManager();
-
+    BSTNode<string, int> *bstNode = new BSTNode<string, int>();
     return 0;
 }

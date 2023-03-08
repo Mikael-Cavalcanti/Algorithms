@@ -12,7 +12,7 @@ public:
     bool Search(T array[], int left, int right, T &Key)
     {
 
-        std::cout << "interation" << endl;
+        // std::cout << "interation" << endl;
         int middle;
 
         if (right >= left)

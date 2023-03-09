@@ -6,6 +6,11 @@
         "*.tcc": "cpp",
         "list": "cpp",
         "string": "cpp",
-        "array": "cpp"
+        "array": "cpp",
+        "system_error": "cpp",
+        "functional": "cpp",
+        "tuple": "cpp",
+        "type_traits": "cpp",
+        "utility": "cpp"
     }
 }

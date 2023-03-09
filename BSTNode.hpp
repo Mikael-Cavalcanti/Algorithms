@@ -18,6 +18,7 @@ public:
         left = nullptr;
         right = nullptr;
     }
+    // Key, value, left, right
     BSTNode(Key key, T value, BSTNode *l = nullptr, BSTNode *r = nullptr)
     {
         this->key = key;
@@ -32,13 +33,13 @@ public:
     Key &GetKey() { return key; }
 
 public:
-    void SetElement(const T &element) { value = element; }
-    T &GetElement() { return value; }
-    inline BSTNode *Left() const { return left; }
-    inline BSTNode *Right() const { return right; }
-    void SetLeft(BinNode<T> *l) { left = (BSTNode *)l; }
-    void SetRight(BinNode<T> *r) { right = (BSTNode *)r; }
-    bool IsLeaf() { return (left == nullptr && right == nullptr); }
+    void SetElement(const T &element) override { value = element; }
+    T &GetElement() override { return value; }
+    inline BSTNode *GetLeft() const override { return left; }
+    inline BSTNode *GetRight() const override { return right; }
+    void SetLeft(BinNode<T> *l) override { left = (BSTNode *)l; }
+    void SetRight(BinNode<T> *r) override { right = (BSTNode *)r; }
+    bool IsLeaf() override { return (left == nullptr && right == nullptr); }
 };
 
 #endif

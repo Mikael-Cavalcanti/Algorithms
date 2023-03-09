@@ -50,11 +50,10 @@ const T &ReturnValue()
 }
 
 #include <cmath>
-#include "HashDic.hpp"
-#include "BSTNode.hpp"
+#include "BSTDic.hpp"
 
 int main(int argc, char const *argv[])
 {
-    BSTNode<string, int> *bstNode = new BSTNode<string, int>();
+    BSTDictionary<string, int> *dictionary = new BSTDictionary<string, int>();
     return 0;
 }

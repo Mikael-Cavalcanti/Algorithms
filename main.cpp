@@ -50,10 +50,10 @@ const T &ReturnValue()
 }
 
 #include <cmath>
-#include "BSTDic.hpp"
+#include <stack>
 
 int main(int argc, char const *argv[])
 {
-    BSTDictionary<string, int> *dictionary = new BSTDictionary<string, int>();
+
     return 0;
 }

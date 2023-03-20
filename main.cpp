@@ -51,9 +51,38 @@ const T &ReturnValue()
 
 #include <cmath>
 #include <stack>
+#include "GraphM.hpp"
+#include "GraphMain.hpp"
 
 int main(int argc, char const *argv[])
 {
+    GraphMain *main = new GraphMain();
+
+    GraphM *graph = new GraphM(6);
+    graph->SetEdge(0, 2);
+    graph->SetEdge(2, 0);
+    graph->SetEdge(0, 4);
+    graph->SetEdge(4, 0);
+    graph->SetEdge(4, 5);
+    graph->SetEdge(5, 4);
+    graph->SetEdge(2, 1);
+    graph->SetEdge(1, 2);
+    graph->SetEdge(2, 3);
+    graph->SetEdge(3, 2);
+    graph->SetEdge(3, 5);
+    graph->SetEdge(5, 3);
+    graph->SetEdge(1, 5);
+    graph->SetEdge(5, 1);
+    graph->SetEdge(2, 5);
+    graph->SetEdge(5, 2);
+
+    graph->PrintGraph();
+
+    // main->DFSTraverse(graph);
+    main->BFSTraverse(graph);
+
+    delete graph;
+    delete main;
 
     return 0;
 }

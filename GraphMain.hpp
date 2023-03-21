@@ -7,8 +7,14 @@ using namespace std;
 #include <stack>
 #include "GraphM.hpp"
 
+#define unMark -1
+
 class GraphMain
 {
+private:
+    int *pred;
+    int nVertice;
+
 private:
     void DFS(GraphM *g, const int &v)
     {
@@ -31,13 +37,15 @@ private:
         {
             int v = mqueue.front();
             mqueue.pop();
-            PreVisit(v);
+            // PreVisit(v);
             int w = g->First(v);
             while (w < g->Vertice())
             {
                 if (g->GetMark(w) == unvisited)
                 {
                     g->SetMark(w, visited);
+                    // cout << v << " prev of: " << w << endl;
+                    pred[w] = v;
                     mqueue.push(w);
                 }
                 w = g->Next(v, w);
@@ -53,6 +61,18 @@ private:
                 TopSortHelper(g, w, s);
         // cout << v << endl;
         s->push(v);
+    }
+
+public:
+    GraphMain(int numVertice)
+    {
+        nVertice = numVertice;
+        pred = new int[nVertice];
+        ResetPred();
+    }
+    ~GraphMain()
+    {
+        delete[] pred;
     }
 
 public:
@@ -88,6 +108,25 @@ public:
         for (int v = 0; v < g->Vertice(); v++)
             if (g->GetMark(v) == unvisited)
                 TopSortHelper(g, v, s);
+    }
+
+    void PrintPred()
+    {
+        cout << endl
+             << "Pred" << endl;
+        cout << "[ ";
+        for (int i = 0; i < nVertice; i++)
+        {
+            cout << pred[i] << " ";
+        }
+        cout << "]" << endl;
+    }
+    void ResetPred()
+    {
+        for (int i = 0; i < nVertice; i++)
+        {
+            pred[i] = unMark;
+        }
     }
 };
 #endif

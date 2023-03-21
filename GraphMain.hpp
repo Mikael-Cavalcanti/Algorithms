@@ -4,6 +4,7 @@
 #include <iostream>
 using namespace std;
 
+#include <stack>
 #include "GraphM.hpp"
 
 class GraphMain
@@ -12,7 +13,7 @@ private:
     void DFS(GraphM *g, const int &v)
     {
         // previsit()
-        PreVisit(v);
+        // PreVisit(v);
         g->SetMark(v, visited);
         for (int w = g->First(v); w < g->Vertice(); w = g->Next(v, w))
             if (g->GetMark(w) == unvisited)
@@ -44,6 +45,15 @@ private:
             // PosVisit(v);
         }
     }
+    void TopSortHelper(GraphM *g, const int &v, stack<int> *s)
+    {
+        g->SetMark(v, visited);
+        for (int w = g->First(v); w < g->Vertice(); w = g->Next(v, w))
+            if (g->GetMark(w) == unvisited)
+                TopSortHelper(g, w, s);
+        // cout << v << endl;
+        s->push(v);
+    }
 
 public:
     void DFSTraverse(GraphM *g)
@@ -69,6 +79,15 @@ public:
     void PosVisit(const int &v)
     {
         cout << "Posvisit: " << v << endl;
+    }
+
+    void TopoSort(GraphM *g, stack<int> *s)
+    {
+        g->ResetMark();
+
+        for (int v = 0; v < g->Vertice(); v++)
+            if (g->GetMark(v) == unvisited)
+                TopSortHelper(g, v, s);
     }
 };
 #endif

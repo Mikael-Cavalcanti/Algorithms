@@ -50,7 +50,6 @@ const T &ReturnValue()
 }
 
 #include "GraphL.hpp"
-#include <list>
 
 int main(int argc, char const *argv[])
 {
@@ -108,9 +107,9 @@ int main(int argc, char const *argv[])
 
     // cout << "vertice: " << e->Vertex() << " weight: " << e->Weight() << endl;
 
-    // Graphl<int> *graph = new Graphl<int>(3);
-
-    Graphl<int> *g = new Graphl<int>(2);
+    GraphL<int> *g = new GraphL<int>(2);
+    g->SetEdge(0, 1, 2);
+    cout << "0 → " << g->adj[0].front().Vertex() << endl;
 
     return 0;
 }

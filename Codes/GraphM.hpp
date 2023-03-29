@@ -4,23 +4,27 @@
 #include "Graph.hpp"
 #define visited true
 #define unvisited false
-#define infinite 0
 
 #include <iostream>
 #include <queue>
-using namespace std;
 
-class GraphM : public Graph
+#define INF(T) (Infinity<T>::value)
+
+template <class T>
+class GraphM : public Graph<T>
 {
 private:
-    int **matrix;
+    T **matrix;
     int numVertex, numEdge;
     bool *mark;
-    queue<int> *mqueue;
+    queue<T> *mqueue;
 
 public:
     GraphM() {}
-    GraphM(const int numVertex) { Init(numVertex); }
+    GraphM(const int numVertex)
+    {
+        Init(numVertex);
+    }
     ~GraphM()
     {
         delete[] mark;
@@ -33,33 +37,33 @@ public:
 public:
     void Init(const int n)
     {
-        int x;
         numEdge = 0;
         numVertex = n;
 
         mark = new bool[Vertice()];
         ResetMark();
 
-        matrix = new int *[Vertice()];
-        for (x = 0; x < Vertice(); x++)
-            matrix[x] = new int[Vertice()];
-        for (x = 0; x < Vertice(); x++)
+        matrix = new T *[Vertice()];
+        for (int x = 0; x < Vertice(); x++)
+            matrix[x] = new T[Vertice()];
+
+        for (int x = 0; x < Vertice(); x++)
             for (int y = 0; y < Vertice(); y++)
-                matrix[x][y] = infinite;
+                matrix[x][y] = INF(T);
     }
     const int Vertice() const { return numVertex; }
     const int Edge() const { return numEdge; }
     const int First(int v) const
     {
         for (int y = 0; y < Vertice(); y++)
-            if (matrix[v][y] != infinite)
+            if (matrix[v][y] != INF(T))
                 return y;
         return Vertice();
     }
     const int Next(int v, int w) const
     {
         for (int y = w + 1; y < Vertice(); y++)
-            if (matrix[v][y] != infinite)
+            if (matrix[v][y] != INF(T))
                 return y;
         return Vertice();
     }
@@ -67,19 +71,19 @@ public:
     {
         if (weight < 0)
             return;
-        if (matrix[v1][v2] == infinite)
+        if (matrix[v1][v2] == INF(T))
             numEdge++;
         matrix[v1][v2] = weight;
     }
     void DelEdge(int v1, int v2)
     {
-        if (matrix[v1][v2] != infinite)
+        if (matrix[v1][v2] != INF(T))
             numEdge--;
-        matrix[v1][v2] = infinite;
+        matrix[v1][v2] = INF(T);
     }
-    bool IsEdge(int x, int y) { return matrix[x][y] != infinite; }
+    bool IsEdge(int x, int y) { return matrix[x][y] != INF(T); }
     int Weight(int v1, int v2) { return matrix[v1][v2]; }
-    int GetMark(int v) { return mark[v]; }
+    bool GetMark(int v) { return mark[v]; }
     void SetMark(int v, bool val) { mark[v] = val; }
 
     void PrintGraph()

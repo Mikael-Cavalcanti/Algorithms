@@ -1,8 +1,6 @@
 #ifndef EDGE_ADJACENCY_LIST_GRAPH
 #define EDGE_ADJACENCY_LIST_GRAPH
 
-#include <limits>
-
 template <typename T>
 class Edge
 {

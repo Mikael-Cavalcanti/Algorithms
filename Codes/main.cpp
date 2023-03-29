@@ -49,41 +49,37 @@ const T &ReturnValue()
     return value;
 }
 
-#include <cmath>
-#include <stack>
-#include "GraphM.hpp"
-#include "GraphMain.hpp"
+#include "GraphL.hpp"
+#include <list>
 
 int main(int argc, char const *argv[])
 {
     // stack<int> *s = new stack<int>();
 
-    GraphMain *main = new GraphMain(6);
+    // GraphM<int> *graph = new GraphM<int>(3);
+    // graph->SetEdge(0, 2);
+    // graph->SetEdge(2, 0);
+    // graph->SetEdge(0, 4);
+    // graph->SetEdge(4, 0);
+    // graph->SetEdge(4, 5);
+    // graph->SetEdge(5, 4);
+    // graph->SetEdge(2, 1);
+    // graph->SetEdge(1, 2);
+    // graph->SetEdge(2, 3);
+    // graph->SetEdge(3, 2);
+    // graph->SetEdge(3, 5);
+    // graph->SetEdge(5, 3);
+    // graph->SetEdge(1, 5);
+    // graph->SetEdge(5, 1);
+    // graph->SetEdge(2, 5);
+    // graph->SetEdge(5, 2);
 
-    GraphM *graph = new GraphM(6);
-    graph->SetEdge(0, 2);
-    graph->SetEdge(2, 0);
-    graph->SetEdge(0, 4);
-    graph->SetEdge(4, 0);
-    graph->SetEdge(4, 5);
-    graph->SetEdge(5, 4);
-    graph->SetEdge(2, 1);
-    graph->SetEdge(1, 2);
-    graph->SetEdge(2, 3);
-    graph->SetEdge(3, 2);
-    graph->SetEdge(3, 5);
-    graph->SetEdge(5, 3);
-    graph->SetEdge(1, 5);
-    graph->SetEdge(5, 1);
-    graph->SetEdge(2, 5);
-    graph->SetEdge(5, 2);
-
-    graph->PrintGraph();
+    // graph->PrintGraph();
 
     // main->DFSTraverse(graph);
-    main->BFSTraverse(graph);
+    // main->BFSTraverse(graph);
 
-    main->PrintPred();
+    // main->PrintPred();
 
     // graph->SetEdge(0, 1);
     // graph->SetEdge(0, 2);
@@ -106,9 +102,15 @@ int main(int argc, char const *argv[])
     //     s->pop();
     // }
 
-    delete graph;
-    delete main;
+    // delete graph;
     // delete s;
+    // Edge<double> *e = new Edge<double>();
+
+    // cout << "vertice: " << e->Vertex() << " weight: " << e->Weight() << endl;
+
+    // Graphl<int> *graph = new Graphl<int>(3);
+
+    Graphl<int> *g = new Graphl<int>(2);
 
     return 0;
 }

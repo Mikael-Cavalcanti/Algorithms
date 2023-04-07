@@ -11,17 +11,27 @@
 using namespace std;
 
 template <typename T>
-class GraphL
+class GraphL : Graph<T>
 {
 public:
     int numVertex, numEdge;
     bool *mark;
-    list<Edge<T>> *adj;
+    list<list<Edge<T>>> adj;
 
 public:
     GraphL(int nVertex)
     {
-        numVertex = nVertex;
+        Init(nVertex);
+    }
+    ~GraphL()
+    {
+        delete[] mark;
+    }
+
+public:
+    void Init(const int n) override
+    {
+        numVertex = n;
         numEdge = 0;
 
         mark = new bool[numVertex];
@@ -30,17 +40,20 @@ public:
 
         adj = new list<Edge<T>>[numVertex];
     }
-    ~GraphL()
+    const int GetVertices() const override { return numVertex; }
+    const int GetEdges() const override { return numEdge; }
+    const T First(int v) const override {}
+    const T Next(int v, int w) const override {}
+    void SetEdge(const int i, const int j, int weight) override {}
+    void DelEdge(int v1, int v2) override {}
+    bool IsEdge(int i, int j) override { return false; }
+    int Weight(int v1, int v2) override
     {
-        delete[] mark;
-        delete[] adj;
+        int weight = IsEdge(v1, v2) ? adj[v1][v2].Weight() : Infinity<T>::value;
+        return weight;
     }
-
-    void SetEdge(const int i, const T j, const int weight = 0)
-    {
-        Edge<T> dist(j, weight);
-        adj[i].push_back(dist);
-    }
+    bool GetMark(int v) override { return mark[v]; }
+    void SetMark(int v, bool val) override { mark[v] = val; }
 };
 
 #endif

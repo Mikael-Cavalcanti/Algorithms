@@ -1,26 +1,42 @@
 #ifndef EDGE_ADJACENCY_LIST_GRAPH
 #define EDGE_ADJACENCY_LIST_GRAPH
 
-template <typename T>
 class Edge
 {
 private:
-    T vert;
+    int vertex;
     int wt;
 
 public:
-    Edge()
+    Edge() { vertex = wt = 0; }
+    Edge(const int v, const int w)
     {
-        vert = T();
-        wt = 0;
-    }
-    Edge(const T v, const int w)
-    {
-        vert = v;
+        vertex = v;
         wt = w;
     }
-    const T Vertex() const { return vert; }
-    const int Weight() const { return wt; }
+    const int &Vertex() const { return vertex; }
+    const int &Weight() const { return wt; }
+
+    bool operator<(const Edge &b)
+    {
+        return wt < b.wt;
+    }
+    bool operator>(const Edge &b)
+    {
+        return wt > b.wt;
+    }
+    bool operator<=(const Edge &b)
+    {
+        return wt <= b.wt;
+    }
+    bool operator>=(const Edge &b)
+    {
+        return wt >= b.wt;
+    }
+    bool operator==(const Edge &b)
+    {
+        return wt == b.wt;
+    }
 };
 
 #endif

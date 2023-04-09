@@ -49,9 +49,11 @@ const T &ReturnValue()
     return value;
 }
 
+#include "GraphL.hpp"
+#include "GraphM.hpp"
 
 int main(int argc, char const *argv[])
 {
-
+    
     return 0;
 }

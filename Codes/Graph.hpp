@@ -10,7 +10,6 @@ struct Infinity
     static constexpr T value = numeric_limits<T>::max();
 };
 
-template <class T>
 class Graph
 {
 private:
@@ -25,13 +24,13 @@ public:
     virtual void Init(const int n) = 0;
     virtual const int GetVertices() const = 0;
     virtual const int GetEdges() const = 0;
-    virtual const int First(int v) const = 0;
-    virtual const int Next(int v, int w) const = 0;
-    virtual void SetEdge(const int i, const int j, int weight) = 0;
-    virtual void DelEdge(int v1, int v2) = 0;
-    virtual bool IsEdge(int i, int j) = 0;
-    virtual int Weight(int v1, int v2) = 0;
-    virtual bool GetMark(int v) = 0;
-    virtual void SetMark(int v, bool val) = 0;
+    virtual const int First(const int v) = 0;
+    virtual const int Next(const int v, const int w) = 0;
+    virtual void SetEdge(const int i, const int j, const int weight) = 0;
+    virtual void DelEdge(const int v1, const int v2) = 0;
+    virtual bool IsEdge(const int i, const int j) = 0;
+    virtual int GetWeight(const int v1, const int v2) = 0;
+    virtual bool GetMark(const int v) = 0;
+    virtual void SetMark(const int v, const bool val) = 0;
 };
 #endif

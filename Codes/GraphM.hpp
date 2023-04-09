@@ -10,14 +10,13 @@
 
 #define INF(T) (Infinity<T>::value)
 
-template <class T>
-class GraphM : public Graph<T>
+class GraphM : public Graph
 {
 private:
-    T **matrix;
+    int **matrix;
     int numVertex, numEdge;
     bool *mark;
-    queue<T> *mqueue;
+    queue<int> *mqueue;
 
 public:
     GraphM() {}
@@ -43,27 +42,27 @@ public:
         mark = new bool[Vertice()];
         ResetMark();
 
-        matrix = new T *[Vertice()];
+        matrix = new int *[Vertice()];
         for (int x = 0; x < Vertice(); x++)
-            matrix[x] = new T[Vertice()];
+            matrix[x] = new int[Vertice()];
 
         for (int x = 0; x < Vertice(); x++)
             for (int y = 0; y < Vertice(); y++)
-                matrix[x][y] = INF(T);
+                matrix[x][y] = INF(int);
     }
     const int Vertice() const { return numVertex; }
     const int Edge() const { return numEdge; }
     const int First(int v) const
     {
         for (int y = 0; y < Vertice(); y++)
-            if (matrix[v][y] != INF(T))
+            if (matrix[v][y] != INF(int))
                 return y;
         return Vertice();
     }
     const int Next(int v, int w) const
     {
         for (int y = w + 1; y < Vertice(); y++)
-            if (matrix[v][y] != INF(T))
+            if (matrix[v][y] != INF(int))
                 return y;
         return Vertice();
     }
@@ -71,17 +70,17 @@ public:
     {
         if (weight < 0)
             return;
-        if (matrix[v1][v2] == INF(T))
+        if (matrix[v1][v2] == INF(int))
             numEdge++;
         matrix[v1][v2] = weight;
     }
     void DelEdge(int v1, int v2)
     {
-        if (matrix[v1][v2] != INF(T))
+        if (matrix[v1][v2] != INF(int))
             numEdge--;
-        matrix[v1][v2] = INF(T);
+        matrix[v1][v2] = INF(int);
     }
-    bool IsEdge(int x, int y) { return matrix[x][y] != INF(T); }
+    bool IsEdge(int x, int y) { return matrix[x][y] != INF(int); }
     int Weight(int v1, int v2) { return matrix[v1][v2]; }
     bool GetMark(int v) { return mark[v]; }
     void SetMark(int v, bool val) { mark[v] = val; }

@@ -122,8 +122,8 @@ public:
         auto it2 = it->begin();
         if (IsEdge(v1, v2))
             return (*it2).Weight();
-        else
-            return Infinity<int>::value;
+            
+        return Infinity<int>::value;
     }
 
     bool GetMark(const int v) override { return mark[v]; }

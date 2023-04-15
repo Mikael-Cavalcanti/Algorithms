@@ -46,6 +46,7 @@ public:
                     // ProcessEdge(v, w);
                     cout << w << " ";
                 }
+                cout << "dale: " << v << " → " << w << endl;
                 w = graph->Next(v, w);
             }
 

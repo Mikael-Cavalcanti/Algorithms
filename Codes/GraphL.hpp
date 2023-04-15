@@ -10,7 +10,7 @@
 
 using namespace std;
 
-class GraphL : Graph
+class GraphL : public Graph
 {
 public:
     int numVertex, numEdge;
@@ -18,7 +18,7 @@ public:
     list<list<Edge>> adj;
 
 public:
-    GraphL(int nVertex)
+    GraphL(const int nVertex)
     {
         Init(nVertex);
     }
@@ -72,7 +72,7 @@ public:
         return GetVertices();
     }
 
-    void SetEdge(const int i, const int j, const int weight) override
+    void SetEdge(const int i, const int j, const int weight = 0) override
     {
         if (GetWeight(i, j) <= 0)
             return;
@@ -115,6 +115,18 @@ public:
         return false;
     }
 
+    void SetWeight(const int v1, const int v2, const int weight = 0) override
+    {
+        auto it = adj.begin();
+        advance(it, v1);
+        auto it2 = it->begin();
+        if (IsEdge(v1, v2))
+        {
+            advance(it2, v2);
+            (*it2).SetWeight(weight);
+        }
+    }
+
     int GetWeight(const int v1, const int v2) override
     {
         auto it = adj.begin();
@@ -122,7 +134,7 @@ public:
         auto it2 = it->begin();
         if (IsEdge(v1, v2))
             return (*it2).Weight();
-            
+
         return Infinity<int>::value;
     }
 
@@ -140,6 +152,22 @@ public:
             for (auto &edge : *it)
             {
                 cout << edge.Vertex() << " ";
+            }
+            cout << endl;
+        }
+    }
+
+    void PrintWeight()
+    {
+        cout << endl;
+        for (int i = 0; i < GetVertices(); i++)
+        {
+            cout << i << ": ";
+            auto it = adj.begin();
+            advance(it, i);
+            for (auto &edge : *it)
+            {
+                cout << edge.Vertex() << "(" << edge.Weight() << ") ";
             }
             cout << endl;
         }

@@ -39,34 +39,34 @@ public:
         numEdge = 0;
         numVertex = n;
 
-        mark = new bool[Vertice()];
+        mark = new bool[GetVertices()];
         ResetMark();
 
-        matrix = new int *[Vertice()];
-        for (int x = 0; x < Vertice(); x++)
-            matrix[x] = new int[Vertice()];
+        matrix = new int *[GetVertices()];
+        for (int x = 0; x < GetVertices(); x++)
+            matrix[x] = new int[GetVertices()];
 
-        for (int x = 0; x < Vertice(); x++)
-            for (int y = 0; y < Vertice(); y++)
+        for (int x = 0; x < GetVertices(); x++)
+            for (int y = 0; y < GetVertices(); y++)
                 matrix[x][y] = INF(int);
     }
-    const int Vertice() const { return numVertex; }
-    const int Edge() const { return numEdge; }
-    const int First(int v) const
+    const int GetVertices() const override { return numVertex; }
+    const int GetEdges() const override { return numEdge; }
+    const int First(const int v) override
     {
-        for (int y = 0; y < Vertice(); y++)
+        for (int y = 0; y < GetVertices(); y++)
             if (matrix[v][y] != INF(int))
                 return y;
-        return Vertice();
+        return GetVertices();
     }
-    const int Next(int v, int w) const
+    const int Next(const int v, const int w) override
     {
-        for (int y = w + 1; y < Vertice(); y++)
+        for (int y = w + 1; y < GetVertices(); y++)
             if (matrix[v][y] != INF(int))
                 return y;
-        return Vertice();
+        return GetVertices();
     }
-    void SetEdge(const int v1, const int v2, int weight = 1)
+    void SetEdge(const int v1, const int v2, const int weight = 0) override
     {
         if (weight < 0)
             return;
@@ -74,30 +74,36 @@ public:
             numEdge++;
         matrix[v1][v2] = weight;
     }
-    void DelEdge(int v1, int v2)
+    void DelEdge(const int v1, const int v2) override
     {
         if (matrix[v1][v2] != INF(int))
             numEdge--;
         matrix[v1][v2] = INF(int);
     }
-    bool IsEdge(int x, int y) { return matrix[x][y] != INF(int); }
-    int Weight(int v1, int v2) { return matrix[v1][v2]; }
-    bool GetMark(int v) { return mark[v]; }
-    void SetMark(int v, bool val) { mark[v] = val; }
+    bool IsEdge(const int x, const int y) override { return matrix[x][y] != INF(int); }
+    void SetWeight(const int v1, const int v2, const int weight) override { matrix[v1][v2] = weight; }
+    int GetWeight(const int v1, const int v2) override { return matrix[v1][v2]; }
+    bool GetMark(const int v) override { return mark[v]; }
+    void SetMark(const int v, const bool val) override { mark[v] = val; }
 
-    void PrintGraph()
+    void Print()
     {
-        for (int x = 0; x < Vertice(); x++)
+        cout << endl;
+        for (int x = 0; x < GetVertices(); x++)
         {
-            for (int y = 0; y < Vertice(); y++)
-                cout << matrix[x][y] << " ";
+            cout << x << ": ";
+            for (int y = 0; y < GetVertices(); y++)
+            {
+                if (matrix[x][y] != INF(int))
+                    cout << y << "(" << matrix[x][y] << ") ";
+            }
             cout << endl;
         }
     }
     void ResetMark()
     {
         if (mark != nullptr)
-            for (int x = 0; x < Vertice(); x++)
+            for (int x = 0; x < GetVertices(); x++)
                 mark[x] = unvisited;
     }
 };

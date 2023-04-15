@@ -29,6 +29,7 @@ public:
     virtual void SetEdge(const int i, const int j, const int weight) = 0;
     virtual void DelEdge(const int v1, const int v2) = 0;
     virtual bool IsEdge(const int i, const int j) = 0;
+    virtual void SetWeight(const int v1, const int v2, const int weight) = 0;
     virtual int GetWeight(const int v1, const int v2) = 0;
     virtual bool GetMark(const int v) = 0;
     virtual void SetMark(const int v, const bool val) = 0;

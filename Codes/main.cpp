@@ -50,22 +50,17 @@ const T &ReturnValue()
 }
 
 #include "GraphL.hpp"
-#include "GraphM.hpp"
-#include <map>
 
 int main(int argc, char const *argv[])
 {
-    map<string, int> *m = new map<string, int>{
-        {"jose", 24},
-        {"maria", 25},
-        {"mikael", 23},
-        {"joao", 26},
-    };
+    GraphL *graph = new GraphL(2);
 
-    if (m->find("mikael") != m->end())
-        cout << "mikael" << endl;
-    else
-        cout << "not mikel" << endl;
+    graph->SetEdge(0, 0);
+    graph->SetEdge(0, 1, 10);
+    graph->Print();
+    graph->PrintWeight();
+
+    delete graph;
 
     return 0;
 }

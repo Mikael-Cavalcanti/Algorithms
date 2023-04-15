@@ -71,7 +71,7 @@ int main(int argc, char const *argv[])
     BFSTraverse *bfs = new BFSTraverse();
 
     GraphM *graph = new GraphM(6);
-    graph->SetEdge(0, 0);
+    // graph->SetEdge(0, 0);
     graph->SetEdge(0, 2);
     graph->SetEdge(0, 4);
     graph->SetEdge(4, 5);
@@ -86,8 +86,10 @@ int main(int argc, char const *argv[])
     for (int i = 0; i < graph->GetVertices(); i++)
         graph->SetMark(i, unvisited);
 
-    bfs->BFS(graph, 0);
-    bfs->PrintDistances();
+    cout << "next: " << graph->Next(2, 5) << endl;
+
+    // bfs->BFS(graph, 0);
+    // bfs->PrintDistances();
 
     delete graph;
     delete bfs;

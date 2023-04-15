@@ -64,10 +64,11 @@ public:
             advance(it, v);
             auto it2 = it->begin();
             advance(it2, w);
-            ++it2;
-            // if it2 less list size
+            it2++;
             if (it2 != it->end())
                 return (*it2).Vertex();
+            else
+                return GetVertices();
         }
         return GetVertices();
     }

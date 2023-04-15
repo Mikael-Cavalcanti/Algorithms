@@ -86,9 +86,9 @@ int main(int argc, char const *argv[])
     for (int i = 0; i < graph->GetVertices(); i++)
         graph->SetMark(i, unvisited);
 
-    cout << "next: " << graph->Next(2, 5) << endl;
+    // cout << "next: " << graph->Next(2, 5) << endl;
 
-    // bfs->BFS(graph, 0);
+    bfs->BFS(graph, 0);
     // bfs->PrintDistances();
 
     delete graph;

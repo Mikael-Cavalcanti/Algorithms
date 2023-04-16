@@ -4,6 +4,7 @@
 #include "Graph.hpp"
 #include "Edge.hpp"
 #include <list>
+#include <iterator>
 
 #define visited true
 #define unvisited false
@@ -62,13 +63,17 @@ public:
         {
             auto it = adj.begin();
             advance(it, v);
-            auto it2 = it->begin();
-            advance(it2, w);
-            it2++;
-            if (it2 != it->end())
-                return (*it2).Vertex();
-            else
-                return GetVertices();
+            for (auto it2 = it->begin(); it2 != it->end(); it2++)
+            {
+                if ((*it2).Vertex() == w)
+                {
+                    it2++;
+                    if (it2 != it->end())
+                        return (*it2).Vertex();
+                    else
+                        return GetVertices();
+                }
+            }
         }
         return GetVertices();
     }
@@ -80,12 +85,14 @@ public:
         Edge e(j, weight);
         auto it = adj.begin();
         advance(it, i);
-        auto it2 = it->begin();
+
         if (IsEdge(i, j))
         {
-            advance(it2, j);
-            it->erase(it2);
+            // DelEdge(i, j);
+            cout << "Edge already exists." << endl;
+            return;
         }
+
         it->push_back(e);
         it->sort();
         numEdge++;

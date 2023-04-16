@@ -9,6 +9,7 @@ using namespace std;
 
 #define unvisited false
 #define visited true
+#define infinity 1000000
 
 class BFSTraverse
 {
@@ -19,7 +20,7 @@ public:
     void BFS(Graph *graph, const int start)
     {
         queue<int> myQueue;
-        distances.resize(graph->GetVertices(), -1);
+        distances.resize(graph->GetVertices(), infinity);
         myQueue.push(start);
         graph->SetMark(start, visited);
         distances[start] = 0;
@@ -32,8 +33,8 @@ public:
             // ProcessVertexEarly(v);
 
             int w = graph->First(v);
-            cout << v << " ";
-            cout << "neighbors: ";
+            // cout << v << " ";
+            // cout << "neighbors: ";
 
             while (w < graph->GetVertices())
             {
@@ -44,15 +45,20 @@ public:
                     myQueue.push(w);
                     distances[w] = distances[v] + 1;
                     // ProcessEdge(v, w);
-                    cout << w << " ";
+                    // cout << w << " ";
                 }
                 w = graph->Next(v, w);
             }
 
-            cout << endl;
+            // cout << endl;
 
             // ProcessVertexLate(v);
         }
+    }
+
+    int GetDistance(const int v) const
+    {
+        return distances[v];
     }
 
     void PrintDistances()

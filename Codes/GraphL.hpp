@@ -88,13 +88,14 @@ public:
 
         if (IsEdge(i, j))
         {
-            // DelEdge(i, j);
             cout << "Edge already exists." << endl;
             return;
         }
 
         it->push_back(e);
-        it->sort();
+        it->sort([this](const Edge &e1, const Edge &e2)
+                 { return e1.Vertex() <= e2.Vertex(); });
+
         numEdge++;
     }
 

@@ -128,11 +128,13 @@ public:
     {
         auto it = adj.begin();
         advance(it, v1);
-        auto it2 = it->begin();
         if (IsEdge(v1, v2))
         {
-            advance(it2, v2);
-            (*it2).SetWeight(weight);
+            for (auto &edge : *it)
+            {
+                if (edge.Vertex() == v2)
+                    edge.SetWeight(weight);
+            }
         }
     }
 
@@ -142,7 +144,13 @@ public:
         advance(it, v1);
         auto it2 = it->begin();
         if (IsEdge(v1, v2))
-            return (*it2).Weight();
+        {
+            for (auto &edge : *it)
+            {
+                if (edge.Vertex() == v2)
+                    return edge.Weight();
+            }
+        }
 
         return Infinity<int>::value;
     }

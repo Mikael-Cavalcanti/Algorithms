@@ -63,7 +63,7 @@ private:
     }
 
 public:
-    Dijkstra() {}
+    Dijkstra(const int n) { Init(n); }
     ~Dijkstra()
     {
         delete[] distance;
@@ -71,7 +71,7 @@ public:
     }
 
 public:
-    void PathFind(Graph *g, const int start, int *d)
+    void PathFind(Graph *g, const int start = 0)
     {
         for (int i = 0; i < g->GetVertices(); i++)
         {
@@ -115,6 +115,14 @@ public:
             }
         }
     }
+
+    int *GetDistance() const { return distance; }
+
+    int *GetParent() const { return parent; }
+
+    const int GetLength(const int v) const { return distance[v]; }
+
+    const int GetParent(const int v) const { return parent[v]; }
 };
 
 #endif
